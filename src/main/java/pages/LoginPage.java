@@ -6,6 +6,9 @@ import base.BaseTest;
 public class LoginPage extends BasePageObject {
     public static String pageURL = "myAccount/login.jsp";
 
+    /**
+     * Login page constructor
+     */
     public LoginPage(BaseTest myBaseTest) {
         super(myBaseTest);
     }
