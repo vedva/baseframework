@@ -1,0 +1,24 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="VitaminShoppe" verbose="1" parallel="tests" thread-count="2">
+    <listeners>
+        <listener class-name="utilities.TestListener"></listener>
+    </listeners>
+    // my test with driver
+    <test name="loginPageCheckIn-FF" >
+        <parameter name="browser"  value="firefox"/>
+        <classes>
+            <class name="tests.LoginTest" >
+            </class>
+        </classes>
+    </test>
+
+        <test name="loginPageCheckIn-CH"  >
+            <parameter name="browser"  value="chrome"/>
+            <classes>
+                <class name="tests.LoginTest" >
+                </class>
+            </classes>
+        </test>
+
+</suite>

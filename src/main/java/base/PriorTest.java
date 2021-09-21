@@ -1,16 +1,10 @@
 package base;
 
-import com.beust.jcommander.Parameters;
-import org.apache.log4j.ConsoleAppender;
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
-import org.apache.log4j.PatternLayout;
+import org.apache.log4j.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.*;
+import utilities.ConfigReader;
 
 import java.util.concurrent.TimeUnit;
 
@@ -35,21 +29,13 @@ public class PriorTest {
     void classSetUp() {
 
     }
-
     @Parameters({"browser"})
     @BeforeMethod
     protected void methodSetUp(String browser) {
 
-
-        //logger.info("logger is working");
-
         logger.info("method set up");
-//        System.setProperty("webdriver.gecko.driver", "src/main/resources/geckodriver.exe");
-//        driver = new FirefoxDriver();
-//        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
-//        driver = new ChromeDriver();
 
-        threadLocalWebDriver.set(MyBrowserFactory.getDriver(browser, logger));
+        threadLocalWebDriver.set(BrowserFactory.getDriver(browser, logger));
         threadLocalWebDriver.get().manage().window().maximize();
         threadLocalWebDriver.get().manage().timeouts().implicitlyWait(Long.parseLong(ConfigReader.getProperty("implicitWait")), TimeUnit.SECONDS);
 
