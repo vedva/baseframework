@@ -2,6 +2,7 @@ package base;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -70,7 +71,7 @@ public class BaseTest extends PriorTest {
                 this.setText(element, inputText);
     }
 
-    //my new common methods
+    //new common methods
 
     /**
      * Find WebElements by xpath
@@ -282,6 +283,9 @@ public class BaseTest extends PriorTest {
         return selectByVisibleText(element, text);
     }
 
+    /**
+     *  Getting page URL using base domain URL
+     */
     public String getPageURL(String pageName) {
         String baseDomain = ConfigReader.getProperty("baseDomain");
         String url;
@@ -295,5 +299,54 @@ public class BaseTest extends PriorTest {
         }
         return url;
     }
+
+    /**
+     *  Clicking on element using JavascriptExecutor
+     */
+    public boolean jsClick(WebElement element){
+        JavascriptExecutor js = (JavascriptExecutor) getDriver();
+        try {
+            js.executeScript("arguments[0].click()", element);
+        } catch (Exception e) {
+            logger.warn("Can't find elements :[" + element + " - exception" + StringUtil.getFullExceptionMessage(e));
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     *  Clicking on element using JavascriptExecutor
+     */
+    public boolean jsClick(String xpath){
+        WebElement element = find(xpath);
+        if (element == null){
+            return false;
+        }
+        return jsClick(element);
+    }
+
+    /**
+     *  Getting all attributes using Javascriptexecuter
+     */
+        public Boolean jsGetAllAttributes(){
+//            Map getAllAttributes(WebElement element) {
+//                r.logDebug "Getting All attributes from element.."
+//                try {
+//                    WebDriver driver = r.getWebDriver()
+//                    return ((JavascriptExecutor) driver).executeScript(
+//                            """
+//                            var items = {};
+//                            for (index = 0; index < arguments[0].attributes.length; ++index) {
+//                                items[arguments[0].attributes[index].name] = arguments[0].attributes[index].value
+//                            };
+//                            return items;""",
+//                            element)
+//                } catch (e) {
+//                    r.addIssueTrackerEvent("Can not get ALL attributes from element", e)
+//                    return null
+//                }
+//            }
+            return null;
+        }
 }
 

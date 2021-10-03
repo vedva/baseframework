@@ -9,17 +9,10 @@ import utilities.ConfigReader;
 import java.util.concurrent.TimeUnit;
 
 public class PriorTest {
-    public static Logger logger = Logger.getLogger(PriorTest.class.getClass());
+    public static Logger logger=LoggerService.getInstance();
     protected ThreadLocal<WebDriver> threadLocalWebDriver = new ThreadLocal<>();
     protected ThreadLocal<WebDriverWait> threadLocalWebDriverWait = new ThreadLocal<>();
 
-    static {
-        ConsoleAppender consoleAppender = new ConsoleAppender();
-        consoleAppender.setThreshold(Level.INFO);
-        consoleAppender.setLayout(new PatternLayout("%d [%p|%c|%C{1}] %m%n"));
-        consoleAppender.activateOptions();
-        Logger.getRootLogger().addAppender(consoleAppender);
-    }
 
     @BeforeSuite
     void suiteSetUp() {
