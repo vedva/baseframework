@@ -325,28 +325,5 @@ public class BaseTest extends PriorTest {
         return jsClick(element);
     }
 
-    /**
-     *  Getting all attributes using Javascriptexecuter
-     */
-        public Boolean jsGetAllAttributes(){
-//            Map getAllAttributes(WebElement element) {
-//                r.logDebug "Getting All attributes from element.."
-//                try {
-//                    WebDriver driver = r.getWebDriver()
-//                    return ((JavascriptExecutor) driver).executeScript(
-//                            """
-//                            var items = {};
-//                            for (index = 0; index < arguments[0].attributes.length; ++index) {
-//                                items[arguments[0].attributes[index].name] = arguments[0].attributes[index].value
-//                            };
-//                            return items;""",
-//                            element)
-//                } catch (e) {
-//                    r.addIssueTrackerEvent("Can not get ALL attributes from element", e)
-//                    return null
-//                }
-//            }
-            return null;
-        }
 }
 
